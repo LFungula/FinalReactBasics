@@ -1,11 +1,12 @@
 import { Flex, Heading, HStack, Text, Tag, Button } from "@chakra-ui/react";
 import { RecipeCard } from "../components/RecipeCard";
+import tiles from "../assets/tiles.jpg";
 
 export const RecipeItemPage = ({ recipeItem, clickFn }) => {
   console.log(recipeItem.label);
   return (
     <Flex
-      bgColor="pink.100"
+      bgColor="seashell"
       direction="row"
       p={4}
       wrap="wrap"
@@ -13,6 +14,7 @@ export const RecipeItemPage = ({ recipeItem, clickFn }) => {
       w="100vw"
       minH="100vh"
       align="flex-start"
+      style={{ backgroundImage: `url(${tiles})` }}
     >
       <Flex justify="center" w="100vw">
         <Button shadow="dark-lg" onClick={() => clickFn()}>
@@ -28,7 +30,7 @@ export const RecipeItemPage = ({ recipeItem, clickFn }) => {
         m={4}
         w="sm"
         borderRadius="lg"
-        bgColor="blue.100"
+        bgColor="seashell"
         shadow="dark-lg"
         justify="center"
       >
@@ -51,7 +53,7 @@ export const RecipeItemPage = ({ recipeItem, clickFn }) => {
         m={4}
         w="sm"
         borderRadius="lg"
-        bgColor="teal.100"
+        bgColor="seashell"
         shadow="dark-lg"
         justify="center"
       >
@@ -74,7 +76,7 @@ export const RecipeItemPage = ({ recipeItem, clickFn }) => {
         m={4}
         w="sm"
         borderRadius="lg"
-        bgColor="lightyellow"
+        bgColor="seashell"
         shadow="dark-lg"
         justify="center"
       >
@@ -102,7 +104,7 @@ export const RecipeItemPage = ({ recipeItem, clickFn }) => {
         m={4}
         w="sm"
         borderRadius="lg"
-        bgColor="cyan.100"
+        bgColor="seashell"
         shadow="dark-lg"
         justify="center"
       >
