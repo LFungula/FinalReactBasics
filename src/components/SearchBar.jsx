@@ -4,13 +4,10 @@ import { data } from "../utils/data";
 
 export const Searchbar = () => {
   const [value, setValue] = useState("");
-
-  const findMatch = ({ value }) => {};
+  console.log(value);
 
   const handleChange = (event) => {
     setValue(event.target.value);
-    console.log({ value });
-    findMatch(value);
   };
 
   return (
@@ -19,10 +16,10 @@ export const Searchbar = () => {
         m="4"
         w="90vw"
         variant="filled"
-        onChange={handleChange}
         type="text"
         value={value}
         placeholder="Search your fooditem by name here"
+        onChange={handleChange}
       />
     </div>
   );
