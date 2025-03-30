@@ -7,7 +7,7 @@ export const App = () => {
   const [recipeItemChoice, setrecipeItemChoice] = useState();
 
   return (
-    <Center>
+    <Center fontFamily="Century Gothic">
       {recipeItemChoice ? (
         <RecipeItemPage
           recipeItem={recipeItemChoice}
