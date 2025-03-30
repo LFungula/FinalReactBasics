@@ -3,7 +3,7 @@ import { RecipeCard } from "../components/RecipeCard";
 import { data } from "../utils/data";
 import { Searchbar } from "../components/SearchBar";
 
-export const RecipeListPage = ({ clickFn }) => {
+export const RecipeListPage = ({ clickFn, includeData }) => {
   return (
     <Flex bgColor="blue.100" direction="column">
       <Flex justify="center" p={4}>

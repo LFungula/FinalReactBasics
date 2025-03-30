@@ -25,6 +25,7 @@ export const Searchbar = () => {
         onChange={handleChange}
         shadow="dark-lg"
         value={value}
+        includeData={includeData}
       />
     </div>
   );

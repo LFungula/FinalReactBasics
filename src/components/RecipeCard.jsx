@@ -23,11 +23,28 @@ export const RecipeCard = ({ recipeItem, clickFn }) => {
           <CardHeader>
             <Heading textAlign="center">{recipeItem.label} </Heading>
           </CardHeader>
+          {recipeItem.healthLabels.includes("Vegetarian") ? (
+            <Tag colorScheme="green" size="lg" m={1}>
+              Vegetarian
+            </Tag>
+          ) : (
+            <Tag></Tag>
+          )}
+          {recipeItem.healthLabels.includes("Vegan") ? (
+            <Tag colorScheme="green" size="lg" m={1}>
+              Vegan
+            </Tag>
+          ) : (
+            <Tag></Tag>
+          )}
+          <Tag></Tag>
+
           <Image
             src={recipeItem.image}
             alt={recipeItem.label}
             maxW="container.fit-content"
             borderRadius="lg"
+            m={1}
           ></Image>
           <HStack p={1}>
             {recipeItem.dietLabels.map((dietLabel) => (
