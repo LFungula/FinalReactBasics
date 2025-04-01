@@ -4,7 +4,7 @@ import { data } from "../utils/data";
 import { Searchbar } from "../components/SearchBar";
 import tiles from "../assets/tiles.jpg";
 
-export const RecipeListPage = ({ clickFn, includeData }) => {
+export const RecipeListPage = ({ clickFn }) => {
   return (
     <Flex
       bgColor="blue.100"

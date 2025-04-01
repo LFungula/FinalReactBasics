@@ -1,9 +1,8 @@
-import { Flex, Heading, HStack, Text, Tag, Button } from "@chakra-ui/react";
+import { Flex, Heading, HStack, Tag, Button } from "@chakra-ui/react";
 import { RecipeCard } from "../components/RecipeCard";
 import tiles from "../assets/tiles.jpg";
 
 export const RecipeItemPage = ({ recipeItem, clickFn }) => {
-  console.log(recipeItem.label);
   return (
     <Flex
       bgColor="seashell"
