@@ -7,8 +7,7 @@ import { Searchbar } from "./components/SearchBar";
 
 export const App = () => {
   const [recipeItemChoice, setrecipeItemChoice] = useState();
-  const [FilteredRecipes, setFilteredRecipes] = useState();
-  console.log(FilteredRecipes);
+  const [searchResults, setSearchResults] = useState();
 
   return (
     <Flex
@@ -18,23 +17,20 @@ export const App = () => {
       fontFamily="Century Gothic"
       justify="center"
     >
-      <>
-        <Searchbar
-          FilteredRecipes={FilteredRecipes}
-          setFilteredRecipes={setFilteredRecipes}
+      {recipeItemChoice ? (
+        <RecipeItemPage
+          recipeItem={recipeItemChoice}
+          clickFn={setrecipeItemChoice}
         />
-        {recipeItemChoice ? (
-          <RecipeItemPage
-            recipeItem={recipeItemChoice}
-            clickFn={setrecipeItemChoice}
-          />
-        ) : (
+      ) : (
+        <>
+          <Searchbar changeFn={setSearchResults} />
           <RecipeListPage
             clickFn={setrecipeItemChoice}
-            FilteredRecipes={FilteredRecipes}
+            changeFn={setSearchResults}
           />
-        )}
-      </>
+        </>
+      )}
     </Flex>
   );
 };
