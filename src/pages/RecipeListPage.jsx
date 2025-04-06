@@ -1,23 +1,13 @@
 import { Flex, Heading } from "@chakra-ui/react";
 import { RecipeCard } from "../components/RecipeCard";
 import { data } from "../utils/data";
-import { Searchbar } from "../components/SearchBar";
-import tiles from "../assets/tiles.jpg";
 
-export const RecipeListPage = ({ clickFn, FilteredRecipes }) => {
-  console.log(FilteredRecipes);
+export const RecipeListPage = ({ clickFn }) => {
   return (
-    <Flex
-      bgColor="blue.100"
-      direction="column"
-      style={{ backgroundImage: `url(${tiles})` }}
-    >
-      <Flex justify="center" p={4}>
-        <Heading>Welcome to our restaurant!</Heading>
-      </Flex>
-      <Flex justify="center">
-        <Searchbar FilteredRecipes={FilteredRecipes} />
-      </Flex>
+    <Flex direction="column" justify="center" p={4}>
+      <Heading>Welcome to our restaurant!</Heading>
+
+      <Flex justify="center"></Flex>
       <Flex direction="row" gap={4} flexWrap="wrap" justifyContent="center">
         {data.hits.map((recipeItem) => (
           <RecipeCard
