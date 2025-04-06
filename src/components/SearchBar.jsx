@@ -3,16 +3,19 @@ import { useState } from "react";
 import { data } from "../utils/data";
 
 export const Searchbar = () => {
-  const [value, setValue] = useState("");
+  const [inputSearchbar, setInputSearchbar] = useState("");
 
   const RecipeItems = JSON.parse(
     JSON.stringify(data.hits.map((element) => element.recipe.label))
   );
 
   const FilteredRecipes = RecipeItems.filter((element) =>
-    element.includes(value)
+    element.includes(inputSearchbar)
   );
   console.log(FilteredRecipes);
+  const changeFN = () => (event) => {
+    setInputSearchbar(event.target.value);
+  };
 
   return (
     <div>
@@ -22,11 +25,8 @@ export const Searchbar = () => {
         variant="filled"
         type="text"
         placeholder="Search your fooditem by name here"
-        onChange={(event) => {
-          setValue(event.target.value);
-        }}
+        onChange={changeFN(setInputSearchbar)}
         shadow="dark-lg"
-        value={value}
         FilteredRecipes={FilteredRecipes}
       />
     </div>

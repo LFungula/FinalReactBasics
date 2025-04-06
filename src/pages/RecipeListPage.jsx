@@ -4,7 +4,8 @@ import { data } from "../utils/data";
 import { Searchbar } from "../components/SearchBar";
 import tiles from "../assets/tiles.jpg";
 
-export const RecipeListPage = ({ clickFn }) => {
+export const RecipeListPage = ({ clickFn, FilteredRecipes }) => {
+  console.log(FilteredRecipes);
   return (
     <Flex
       bgColor="blue.100"
@@ -15,7 +16,7 @@ export const RecipeListPage = ({ clickFn }) => {
         <Heading>Welcome to our restaurant!</Heading>
       </Flex>
       <Flex justify="center">
-        <Searchbar />
+        <Searchbar FilteredRecipes={FilteredRecipes} />
       </Flex>
       <Flex direction="row" gap={4} flexWrap="wrap" justifyContent="center">
         {data.hits.map((recipeItem) => (
