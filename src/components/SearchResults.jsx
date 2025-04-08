@@ -7,7 +7,9 @@ export const SearchResults = ({ clickFn }) => {
   const [searchField, setsearchField] = useState("");
 
   const foundRecipes = data.hits.filter((recipes) => {
-    return recipes.recipe.label.includes(searchField);
+    return recipes.recipe.label
+      .toLowerCase()
+      .includes(searchField.toLowerCase());
   });
   console.log(searchField);
 
