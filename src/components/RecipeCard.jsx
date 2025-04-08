@@ -7,12 +7,12 @@ export const RecipeCard = ({ recipeItem, clickFn }) => {
     <Card
       m={4}
       bgColor="seashell"
-      w="sm"
+      w={{ base: "90%", sm: "sm" }}
       onClick={() => clickFn(recipeItem)}
       cursor="pointer"
       borderRadius="lg"
       shadow="dark-lg"
-      maxH="80vw"
+      maxH={{ base: "fit-content", md: "80vw" }}
       overflow="auto"
     >
       <CardHeader>

@@ -6,14 +6,13 @@ export const CustomFlex = ({ ...props }) => {
       wrap="wrap"
       direction="row"
       p={4}
-      m={4}
-      w="lg"
-      h="lg"
+      m={2}
+      w="sm"
+      h={{ base: "fit-content", md: "sm", lg: "md" }}
       borderRadius="lg"
       bgColor="seashell"
       shadow="dark-lg"
       justify="center"
-      gap={2}
       {...props}
     ></Flex>
   );

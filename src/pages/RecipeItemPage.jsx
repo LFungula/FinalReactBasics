@@ -1,5 +1,7 @@
-import { Flex, Heading, HStack, Button, Image, Tag } from "@chakra-ui/react";
+import { Flex, Heading, HStack, Button, Image } from "@chakra-ui/react";
 import { CustomFlex } from "../components/ui/CustomFlex";
+import { CustomTag } from "../components/ui/CustomTag";
+import { CustomHStack } from "../components/ui/CustomHStack";
 
 export const RecipeItemPage = ({ recipeItem, clickFn }) => {
   const nutrients = Object.values(recipeItem.totalNutrients);
@@ -13,7 +15,7 @@ export const RecipeItemPage = ({ recipeItem, clickFn }) => {
       justify="space-evenly"
       align="center"
     >
-      <Flex className="item_page_head" direction="column" m={4} w="90vw">
+      <Flex className="item_page_head" direction="column" m={4} w="100%">
         <Flex justify="center" align="center" m={4}>
           <Button bgColor="seashell" shadow="dark-lg" onClick={() => clickFn()}>
             Return to Menu
@@ -32,34 +34,29 @@ export const RecipeItemPage = ({ recipeItem, clickFn }) => {
         >
           <Heading textAlign="center">{recipeItem.label}</Heading>
           <Flex gap={2}>
-            <HStack>
+            <CustomHStack>
               {recipeItem.dietLabels.map((dietLabel) => (
-                <Tag size="lg" key={dietLabel} colorScheme="teal">
-                  {dietLabel}
-                </Tag>
+                <CustomTag key={dietLabel}>{dietLabel}</CustomTag>
               ))}
-            </HStack>
-            <HStack>
+
               {recipeItem.cautions.map((cautionsLabel) => (
-                <Tag size="lg" key={cautionsLabel} colorScheme="red">
-                  {cautionsLabel}
-                </Tag>
+                <CustomTag key={cautionsLabel}>{cautionsLabel}</CustomTag>
               ))}
-            </HStack>
-            <HStack>
+
               {recipeItem.mealType.map((mealTypeLabel) => (
-                <Tag size="lg" key={mealTypeLabel} colorScheme="blue">
-                  {mealTypeLabel}
-                </Tag>
+                <CustomTag key={mealTypeLabel}>{mealTypeLabel}</CustomTag>
               ))}
-            </HStack>
-            <HStack>
+
               {recipeItem.dishType.map((dishTypeLabel) => (
-                <Tag size="lg" key={dishTypeLabel} colorScheme="yellow">
-                  {dishTypeLabel}
-                </Tag>
+                <CustomTag key={dishTypeLabel}>{dishTypeLabel}</CustomTag>
               ))}
-            </HStack>
+
+              <CustomTag>Total time: {recipeItem.totalTime}</CustomTag>
+
+              {recipeItem.cuisineType.map((cuisine) => (
+                <CustomTag key={cuisine}>Cuisine: {cuisine}</CustomTag>
+              ))}
+            </CustomHStack>
           </Flex>
         </Flex>
       </Flex>
@@ -72,12 +69,15 @@ export const RecipeItemPage = ({ recipeItem, clickFn }) => {
         justifyContent="center"
         alignItems="flex-start"
       >
-        <CustomFlex>
+        <CustomFlex alignContent="center">
           <Image
             src={recipeItem.image}
             alt={recipeItem.label}
             borderRadius="lg"
             m={1}
+            maxH="95%"
+            maxW="95%"
+            fit="scale-down"
           ></Image>
         </CustomFlex>
 
@@ -85,73 +85,40 @@ export const RecipeItemPage = ({ recipeItem, clickFn }) => {
           <Heading m={2} textAlign="center">
             Health = Welth
           </Heading>
-          <HStack wrap="wrap" justify="center">
+          <CustomHStack>
             {recipeItem.healthLabels.map((healthLabel) => (
-              <Tag
-                size="lg"
-                w="fit-content"
-                key={healthLabel}
-                colorScheme="blue"
-              >
-                {healthLabel}
-              </Tag>
+              <CustomTag key={healthLabel}>{healthLabel}</CustomTag>
             ))}
-          </HStack>
+          </CustomHStack>
         </CustomFlex>
 
         <CustomFlex>
           <Heading m={2} textAlign="center">
             But how?
           </Heading>
-          <HStack wrap="wrap" justify="center">
+          <CustomHStack>
             {recipeItem.ingredientLines.map((ingredientLine) => (
-              <Tag
-                size="lg"
-                w="fit-content"
-                key={ingredientLine}
-                colorScheme="blue"
-              >
-                {ingredientLine}
-              </Tag>
+              <CustomTag key={ingredientLine}>{ingredientLine}</CustomTag>
             ))}
-          </HStack>
+          </CustomHStack>
         </CustomFlex>
-        <CustomFlex>
-          <Heading m={2} textAlign="center">
-            Things you might like to know
-          </Heading>
 
-          <HStack wrap="wrap" justify="center">
-            <Tag size="lg" w="fit-content" colorScheme="blue">
-              Total time: {recipeItem.totalTime}
-            </Tag>
-          </HStack>
-
-          <HStack wrap="wrap" justify="center">
-            {recipeItem.cuisineType.map((cuisine) => (
-              <Tag size="lg" w="fit-content" colorScheme="blue" key={cuisine}>
-                Cuisine: {cuisine}
-              </Tag>
-            ))}
-          </HStack>
-        </CustomFlex>
-        <CustomFlex overflowY="scroll" gap={0}>
+        <CustomFlex
+          gap={0}
+          w={{ base: "sm", md: "100%" }}
+          h={{ base: "fit-content", lg: "fit-content" }}
+        >
           <Heading m={2} textAlign="center">
             Things you do not like to know
           </Heading>
-          <HStack wrap="wrap" gap={2} justify="center">
+          <CustomHStack>
             {nutrients.map((nutriant) => (
-              <Tag
-                size="lg"
-                w="fit-content"
-                colorScheme="blue"
-                key={nutriant.quantity}
-              >
+              <CustomTag key={nutriant.quantity}>
                 {nutriant.label} : {Math.round(nutriant.quantity)}{" "}
                 {nutriant.unit}
-              </Tag>
+              </CustomTag>
             ))}
-          </HStack>
+          </CustomHStack>
         </CustomFlex>
       </Flex>
     </Flex>
