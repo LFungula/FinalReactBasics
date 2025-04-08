@@ -12,9 +12,9 @@ export const RecipeCard = ({ recipeItem, clickFn }) => {
       cursor="pointer"
       borderRadius="lg"
       shadow="dark-lg"
-      maxH="80vh"
+      maxH="80vw"
+      overflow="auto"
     >
-      {" "}
       <CardHeader>
         <Heading size="lg" textAlign="center">
           {recipeItem.label}{" "}

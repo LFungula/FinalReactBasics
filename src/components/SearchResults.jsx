@@ -11,9 +11,6 @@ export const SearchResults = ({ clickFn }) => {
       .toLowerCase()
       .includes(searchField.toLowerCase());
   });
-  console.log(searchField);
-
-  console.log(foundRecipes);
 
   const changeFn = (e) => setsearchField(e.target.value);
 

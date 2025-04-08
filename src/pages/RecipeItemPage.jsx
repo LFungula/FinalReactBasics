@@ -1,4 +1,5 @@
-import { Flex, Heading, HStack, Tag, Button, Image } from "@chakra-ui/react";
+import { Flex, Heading, HStack, Button, Image, Tag } from "@chakra-ui/react";
+import { CustomFlex } from "../components/ui/CustomFlex";
 
 export const RecipeItemPage = ({ recipeItem, clickFn }) => {
   const nutrients = Object.values(recipeItem.totalNutrients);
@@ -68,73 +69,41 @@ export const RecipeItemPage = ({ recipeItem, clickFn }) => {
         direction="row"
         wrap="wrap"
         maxW="90vw"
-        justifyContent="flex-start"
+        justifyContent="center"
         alignItems="flex-start"
       >
-        <Flex
-          className="item_page_image"
-          p={4}
-          m={4}
-          w="lg"
-          h="lg"
-          borderRadius="lg"
-          bgColor="seashell"
-          shadow="dark-lg"
-          justify="center"
-        >
+        <CustomFlex>
           <Image
             src={recipeItem.image}
             alt={recipeItem.label}
             borderRadius="lg"
             m={1}
           ></Image>
-        </Flex>
+        </CustomFlex>
 
-        <Flex
-          wrap="wrap"
-          direction="row"
-          p={4}
-          m={4}
-          w="lg"
-          h="lg"
-          borderRadius="lg"
-          bgColor="seashell"
-          shadow="dark-lg"
-          justify="center"
-        >
+        <CustomFlex>
           <Heading m={2} textAlign="center">
             Health = Welth
           </Heading>
-          <HStack wrap="wrap" gap={2} justify="center">
+          <HStack wrap="wrap" justify="center">
             {recipeItem.healthLabels.map((healthLabel) => (
               <Tag
                 size="lg"
                 w="fit-content"
                 key={healthLabel}
-                colorScheme="teal"
+                colorScheme="blue"
               >
                 {healthLabel}
               </Tag>
             ))}
           </HStack>
-        </Flex>
+        </CustomFlex>
 
-        <Flex
-          wrap="wrap"
-          direction="row"
-          p={4}
-          m={4}
-          w="lg"
-          h="lg"
-          borderRadius="lg"
-          bgColor="seashell"
-          shadow="dark-lg"
-          justify="center"
-        >
+        <CustomFlex>
           <Heading m={2} textAlign="center">
             But how?
           </Heading>
-          <HStack wrap="wrap" gap={2} justify="center">
+          <HStack wrap="wrap" justify="center">
             {recipeItem.ingredientLines.map((ingredientLine) => (
               <Tag
                 size="lg"
@@ -146,51 +115,27 @@ export const RecipeItemPage = ({ recipeItem, clickFn }) => {
               </Tag>
             ))}
           </HStack>
-        </Flex>
-        <Flex
-          wrap="wrap"
-          direction="row"
-          p={4}
-          m={4}
-          w="lg"
-          h="lg"
-          borderRadius="lg"
-          bgColor="seashell"
-          shadow="dark-lg"
-          justify="center"
-          gap={2}
-        >
+        </CustomFlex>
+        <CustomFlex>
           <Heading m={2} textAlign="center">
             Things you might like to know
           </Heading>
 
-          <HStack wrap="wrap" gap={2} justify="center">
-            <Tag size="lg" w="fit-content" colorScheme="orange">
+          <HStack wrap="wrap" justify="center">
+            <Tag size="lg" w="fit-content" colorScheme="blue">
               Total time: {recipeItem.totalTime}
             </Tag>
           </HStack>
 
-          <HStack wrap="wrap" gap={2} justify="center">
+          <HStack wrap="wrap" justify="center">
             {recipeItem.cuisineType.map((cuisine) => (
-              <Tag size="lg" w="fit-content" colorScheme="orange" key={cuisine}>
-                {cuisine}
+              <Tag size="lg" w="fit-content" colorScheme="blue" key={cuisine}>
+                Cuisine: {cuisine}
               </Tag>
             ))}
           </HStack>
-        </Flex>
-        <Flex
-          wrap="wrap"
-          direction="row"
-          p={4}
-          m={4}
-          w="lg"
-          h="lg"
-          borderRadius="lg"
-          bgColor="seashell"
-          shadow="dark-lg"
-          justify="center"
-          overflowY="scroll"
-        >
+        </CustomFlex>
+        <CustomFlex overflowY="scroll" gap={0}>
           <Heading m={2} textAlign="center">
             Things you do not like to know
           </Heading>
@@ -199,7 +144,7 @@ export const RecipeItemPage = ({ recipeItem, clickFn }) => {
               <Tag
                 size="lg"
                 w="fit-content"
-                colorScheme="pink"
+                colorScheme="blue"
                 key={nutriant.quantity}
               >
                 {nutriant.label} : {Math.round(nutriant.quantity)}{" "}
@@ -207,7 +152,7 @@ export const RecipeItemPage = ({ recipeItem, clickFn }) => {
               </Tag>
             ))}
           </HStack>
-        </Flex>
+        </CustomFlex>
       </Flex>
     </Flex>
   );
