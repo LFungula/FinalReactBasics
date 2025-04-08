@@ -2,7 +2,6 @@ import { Flex, Heading, HStack, Tag, Button, Image } from "@chakra-ui/react";
 
 export const RecipeItemPage = ({ recipeItem, clickFn }) => {
   const nutrients = Object.values(recipeItem.totalNutrients);
-  console.log(nutrients);
 
   return (
     <Flex
@@ -190,7 +189,7 @@ export const RecipeItemPage = ({ recipeItem, clickFn }) => {
           bgColor="seashell"
           shadow="dark-lg"
           justify="center"
-          overflow="scroll"
+          overflowY="scroll"
         >
           <Heading m={2} textAlign="center">
             Things you do not like to know

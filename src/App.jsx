@@ -1,13 +1,11 @@
 import { useState } from "react";
-import { RecipeListPage } from "./pages/RecipeListPage";
 import { RecipeItemPage } from "./pages/RecipeItemPage";
 import tiles from "./assets/tiles.jpg";
+import { SearchResults } from "./components/SearchResults";
 import { Flex } from "@chakra-ui/react";
-import { Searchbar } from "./components/SearchBar";
 
 export const App = () => {
   const [recipeItemChoice, setrecipeItemChoice] = useState();
-  const [searchResults, setSearchResults] = useState();
 
   return (
     <Flex
@@ -16,6 +14,7 @@ export const App = () => {
       style={{ backgroundImage: `url(${tiles})` }}
       fontFamily="Century Gothic"
       justify="center"
+      minH="100vh"
     >
       {recipeItemChoice ? (
         <RecipeItemPage
@@ -24,11 +23,7 @@ export const App = () => {
         />
       ) : (
         <>
-          <Searchbar changeFn={setSearchResults} />
-          <RecipeListPage
-            clickFn={setrecipeItemChoice}
-            changeFn={setSearchResults}
-          />
+          <SearchResults clickFn={setrecipeItemChoice} />
         </>
       )}
     </Flex>

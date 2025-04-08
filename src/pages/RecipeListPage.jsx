@@ -1,15 +1,13 @@
 import { Flex, Heading } from "@chakra-ui/react";
 import { RecipeCard } from "../components/RecipeCard";
-import { data } from "../utils/data";
 
-export const RecipeListPage = ({ clickFn }) => {
+export const RecipeListPage = ({ recipeItems, clickFn }) => {
   return (
-    <Flex direction="column" justify="center" p={4}>
+    <Flex direction="column" justify="center" p={4} align="center">
       <Heading>Welcome to our restaurant!</Heading>
 
-      <Flex justify="center"></Flex>
       <Flex direction="row" gap={4} flexWrap="wrap" justifyContent="center">
-        {data.hits.map((recipeItem) => (
+        {recipeItems.map((recipeItem) => (
           <RecipeCard
             key={recipeItem.recipe.label}
             recipeItem={recipeItem.recipe}

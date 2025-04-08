@@ -12,39 +12,45 @@ export const RecipeCard = ({ recipeItem, clickFn }) => {
       cursor="pointer"
       borderRadius="lg"
       shadow="dark-lg"
+      maxH="80vh"
     >
-      <CardBody>
+      {" "}
+      <CardHeader>
+        <Heading size="lg" textAlign="center">
+          {recipeItem.label}{" "}
+        </Heading>
+      </CardHeader>
+      <CardBody overflowY="contain">
         <Flex
           direction="column"
           wrap="wrap"
           justify="center"
           alignItems="center"
         >
-          <CardHeader>
-            <Heading textAlign="center">{recipeItem.label} </Heading>
-          </CardHeader>
-          {recipeItem.healthLabels.includes("Vegetarian") ? (
-            <Tag colorScheme="green" size="lg" m={1}>
-              Vegetarian
-            </Tag>
-          ) : (
-            <Tag></Tag>
-          )}
-          {recipeItem.healthLabels.includes("Vegan") ? (
-            <Tag colorScheme="green" size="lg" m={1}>
-              Vegan
-            </Tag>
-          ) : (
-            <Tag></Tag>
-          )}
-          <Tag></Tag>
+          <Flex direction="row">
+            {recipeItem.healthLabels.includes("Vegetarian") ? (
+              <Tag colorScheme="green" size="md" m={1}>
+                Vegetarian
+              </Tag>
+            ) : (
+              ""
+            )}
+            {recipeItem.healthLabels.includes("Vegan") ? (
+              <Tag colorScheme="green" size="md" m={1}>
+                Vegan
+              </Tag>
+            ) : (
+              ""
+            )}
+          </Flex>
 
           <Image
             src={recipeItem.image}
             alt={recipeItem.label}
-            maxW="container.fit-content"
             borderRadius="lg"
             m={1}
+            objectFit="scale-down"
+            maxH="30vh"
           ></Image>
           <HStack p={1}>
             {recipeItem.dietLabels.map((dietLabel) => (
