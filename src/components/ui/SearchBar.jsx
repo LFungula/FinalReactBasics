@@ -9,7 +9,7 @@ export const Searchbar = ({ changeFn }) => {
         w="75vw"
         shadow="dark-lg"
         type="text"
-        placeholder="Search your fooditem by name here"
+        placeholder="Search your food / tiem by name here"
         onChange={changeFn}
       ></Input>
     </Flex>
