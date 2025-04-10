@@ -9,9 +9,13 @@ export const VeganOptionSwitch = ({ onSetValue }) => {
         alignItems="baseline"
         maxW="fit-content"
         m="auto"
+        bgColor="seashell"
+        borderRadius="lg"
+        p={2}
+        shadow="dark-lg"
       >
-        <FormLabel fontSize="lg" fontWeight="bold" p={2} htmlFor="vegan">
-          Show only Vegan options
+        <FormLabel fontSize="lg" fontWeight="bold" htmlFor="vegan">
+          Show Vegan options only
         </FormLabel>
         <Switch
           colorScheme="green"

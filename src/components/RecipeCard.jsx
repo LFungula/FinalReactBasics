@@ -7,7 +7,7 @@ export const RecipeCard = ({ recipeItem, clickFn }) => {
     <Card
       m={4}
       bgColor="seashell"
-      w={{ base: "90%", sm: "sm" }}
+      w={{ base: "90%", sm: "xs" }}
       onClick={() => clickFn(recipeItem)}
       cursor="pointer"
       borderRadius="lg"

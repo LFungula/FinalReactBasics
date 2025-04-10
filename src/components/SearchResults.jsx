@@ -8,22 +8,26 @@ import { VeganOptionSwitch } from "./ui/VeganOptionSwitch";
 export const SearchResults = ({ clickFn }) => {
   const [searchField, setsearchField] = useState("");
   const [switchValue, setSwitchValue] = useState(false);
-  console.log(switchValue);
+  //console.log(switchValue);
   const setValue = () => setSwitchValue(!switchValue);
 
-  switchValue ? console.log("Yes") : console.log("no");
+  //switchValue ? console.log("Yes") : console.log("no");
 
-  let foundRecipes = data.hits.filter((recipes) => {
+  const foundRecipes = data.hits.filter((recipes) => {
     return recipes.recipe.label
       .toLowerCase()
       .includes(searchField.toLowerCase());
   });
 
+  const veganRecipes = foundRecipes.filter((recipes) => {
+    return recipes.recipe.healthLabels.includes("Vegan");
+  });
+
+  let generatedRecipeItems = [];
+
   switchValue
-    ? (foundRecipes = foundRecipes.filter((recipes) => {
-        return recipes.recipe.healthLabels.includes("Vegan");
-      }))
-    : (foundRecipes = foundRecipes);
+    ? (generatedRecipeItems = veganRecipes)
+    : (generatedRecipeItems = foundRecipes);
 
   console.log(foundRecipes);
 
@@ -33,7 +37,7 @@ export const SearchResults = ({ clickFn }) => {
     <>
       <Searchbar changeFn={changeFn} />
       <VeganOptionSwitch onSetValue={setValue} />
-      <RecipeListPage clickFn={clickFn} recipeItems={foundRecipes} />
+      <RecipeListPage clickFn={clickFn} recipeItems={generatedRecipeItems} />
     </>
   );
 };

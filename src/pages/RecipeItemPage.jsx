@@ -1,10 +1,15 @@
-import { Flex, Heading, HStack, Button, Image } from "@chakra-ui/react";
+import { Flex, Heading, Button, Image, Text } from "@chakra-ui/react";
 import { CustomFlex } from "../components/ui/CustomFlex";
 import { CustomTag } from "../components/ui/CustomTag";
 import { CustomHStack } from "../components/ui/CustomHStack";
+import { useEffect } from "react";
 
 export const RecipeItemPage = ({ recipeItem, clickFn }) => {
   const nutrients = Object.values(recipeItem.totalNutrients);
+
+  useEffect(() => {
+    window.scroll(0, 0, "smooth");
+  });
 
   return (
     <Flex
@@ -31,8 +36,10 @@ export const RecipeItemPage = ({ recipeItem, clickFn }) => {
           borderRadius="lg"
           shadow="dark-lg"
           justify="center"
+          gap={4}
         >
           <Heading textAlign="center">{recipeItem.label}</Heading>
+          <Text> serves {recipeItem.yield} people</Text>
           <Flex gap={2}>
             <CustomHStack>
               {recipeItem.dietLabels.map((dietLabel) => (
@@ -65,9 +72,14 @@ export const RecipeItemPage = ({ recipeItem, clickFn }) => {
         className="item_page_body"
         direction="row"
         wrap="wrap"
-        maxW="90vw"
-        justifyContent="center"
-        alignItems="flex-start"
+        maxW="100%"
+        justify={{
+          base: "center",
+          md: "space-evenly",
+          xl: "space-evenly",
+        }}
+        align="center"
+        gap={2}
       >
         <CustomFlex alignContent="center">
           <Image
@@ -81,7 +93,7 @@ export const RecipeItemPage = ({ recipeItem, clickFn }) => {
           ></Image>
         </CustomFlex>
 
-        <CustomFlex>
+        <CustomFlex overflowY="scale-down">
           <Heading m={2} textAlign="center">
             Health = Welth
           </Heading>
@@ -94,7 +106,7 @@ export const RecipeItemPage = ({ recipeItem, clickFn }) => {
 
         <CustomFlex>
           <Heading m={2} textAlign="center">
-            But how?
+            What&lsquo;s in it?
           </Heading>
           <CustomHStack>
             {recipeItem.ingredientLines.map((ingredientLine) => (
@@ -107,13 +119,14 @@ export const RecipeItemPage = ({ recipeItem, clickFn }) => {
           gap={0}
           w={{ base: "sm", md: "100%" }}
           h={{ base: "fit-content", lg: "fit-content" }}
+          m={4}
         >
           <Heading m={2} textAlign="center">
             Things you do not like to know
           </Heading>
           <CustomHStack>
             {nutrients.map((nutriant) => (
-              <CustomTag key={nutriant.quantity}>
+              <CustomTag key={nutriant.label}>
                 {nutriant.label} : {Math.round(nutriant.quantity)}{" "}
                 {nutriant.unit}
               </CustomTag>
