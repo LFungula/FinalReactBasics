@@ -1,10 +1,6 @@
-import { FormControl, FormLabel, Switch, useBoolean } from "@chakra-ui/react";
+import { FormControl, FormLabel, Switch } from "@chakra-ui/react";
 
-export const VeganOptionSwitch = () => {
-  const [switchValue, setSwitchValue] = useBoolean();
-
-  const switchFn = (e) => setSwitchValue.toggle(e.target.value);
-
+export const VeganOptionSwitch = ({ onSetValue }) => {
   return (
     <>
       <FormControl
@@ -21,12 +17,9 @@ export const VeganOptionSwitch = () => {
           colorScheme="green"
           size="lg"
           id="vegan"
-          onChange={switchFn}
-          value={switchValue}
+          onChange={onSetValue}
         />
       </FormControl>
-      {console.log(switchValue)}
-      {console.log(vegan)}
     </>
   );
 };
